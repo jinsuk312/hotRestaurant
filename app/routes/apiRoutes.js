@@ -12,13 +12,13 @@ module.exports = function(app){
     });
     //POST requests, when user submits a form/data to the server
     //submits a JSON object, which is pushed to the tableData array
+    // if the table data IS FULL, push the request to the waitListData array
     app.post("/api/tables", function(req,res){
         // if table data isnt full, push the request to the tableData array
         if(tableData.length < 5){
             tableData.push(req.body);
             res.json(true);
         }
-        // if the table data IS FULL, push the request to the waitListData array
         else{
             waitListData.push(req.body);
             res.json(false);
@@ -29,7 +29,6 @@ module.exports = function(app){
         tableData = [];
         waitListData = [];
         console.log(tableData);
-        console.log(waitListData);
     })
 
 }

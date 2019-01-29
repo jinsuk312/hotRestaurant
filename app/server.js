@@ -9,9 +9,14 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 
 // BodyParser makes it possible for our server to interpret data sent to it.
+
+// tells the system you want JSON to be used
 app.use(bodyParser.json());
+// tells the system whether you want to use a simple algorithm for shallow parsing(false) or complex algorithm for deep parsing that can deal with nested objects(true)
 app.use(bodyParser.urlencoded({ extended: true }));
+// parse an HTML body into a string
 app.use(bodyParser.text());
+// parse various different custom JSON types as JSON
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // ROUTER
